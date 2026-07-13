@@ -71,6 +71,11 @@ export interface CWDCommentsConfig {
    * Placeholder text for comment input
    */
   commentPlaceholder?: string;
+
+  /**
+   * Custom OwO emotion JSON for the emotion picker
+   */
+  emotionJson?: string | Record<string, unknown>;
 }
 
 export class CWDComments {

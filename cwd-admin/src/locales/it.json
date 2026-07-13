@@ -271,7 +271,9 @@
       "widgetLanguage": "Lingua Widget",
       "widgetLanguageHint": "Lingua per il widget frontend.",
       "save": "Salva",
-      "saving": "Salvataggio..."
+      "saving": "Salvataggio...",
+      "emotionJson": "Emotion JSON",
+      "emotionJsonHint": "Custom OwO JSON for the frontend emotion picker. Leave empty to use the three built-in default packs; image packs default to /emotion/<pack>/<file>.png."
     },
     "emailNotify": {
       "title": "Notifica Email",
