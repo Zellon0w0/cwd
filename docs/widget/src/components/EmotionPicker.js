@@ -38,10 +38,12 @@ export class EmotionPicker extends Component {
 					className: 'cwd-emotion-trigger',
 					attributes: {
 						type: 'button',
+						title: this.t('emotion'),
+						'aria-label': this.t('emotion'),
 						'aria-expanded': this.state.open ? 'true' : 'false',
 						onClick: () => this.toggle(),
 					},
-					text: this.t('emotion'),
+					children: [this.createTriggerIcon()],
 				}),
 				...(this.state.open
 					? [
@@ -62,7 +64,7 @@ export class EmotionPicker extends Component {
 										),
 									}),
 									this.createElement('div', {
-										className: 'cwd-emotion-grid',
+										className: `cwd-emotion-grid cwd-emotion-grid-${activeGroup.type}`,
 										children: activeGroup.items.map((item) => this.createEmotionButton(item)),
 									}),
 								],
@@ -75,6 +77,58 @@ export class EmotionPicker extends Component {
 		this.elements.root = root;
 		this.empty(this.container);
 		this.container.appendChild(root);
+	}
+
+	/**
+	 * 创建表情触发按钮图标。
+	 *
+	 * @returns {SVGElement}
+	 */
+	createTriggerIcon() {
+		return this.createElement('svg', {
+			className: 'cwd-emotion-trigger-icon',
+			attributes: {
+				viewBox: '0 0 24 24',
+				'aria-hidden': 'true',
+			},
+			children: [
+				this.createElement('circle', {
+					attributes: {
+						cx: '12',
+						cy: '12',
+						r: '9',
+						fill: 'none',
+						stroke: 'currentColor',
+						'stroke-width': '1.8',
+					},
+				}),
+				this.createElement('circle', {
+					attributes: {
+						cx: '9',
+						cy: '10',
+						r: '1.2',
+						fill: 'currentColor',
+					},
+				}),
+				this.createElement('circle', {
+					attributes: {
+						cx: '15',
+						cy: '10',
+						r: '1.2',
+						fill: 'currentColor',
+					},
+				}),
+				this.createElement('path', {
+					attributes: {
+						d: 'M8 14.5c1 1.6 2.3 2.4 4 2.4s3-.8 4-2.4',
+						fill: 'none',
+						stroke: 'currentColor',
+						'stroke-width': '1.8',
+						'stroke-linecap': 'round',
+					},
+				}),
+			],
+		});
 	}
 
 	/**

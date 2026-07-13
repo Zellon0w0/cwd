@@ -196,7 +196,7 @@
 
 .cwd-emotion-picker-container {
   position: relative;
-  min-height: 30px;
+  min-height: 28px;
 }
 
 .cwd-reply-emotion-picker-container {
@@ -209,20 +209,28 @@
 }
 
 .cwd-emotion-trigger {
-  height: 30px;
-  padding: 0 10px;
-  border: 1px solid var(--cwd-border, #d0d7de);
-  border-radius: var(--cwd-radius, 6px);
-  background: var(--cwd-bg, #ffffff);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
   color: var(--cwd-text-secondary, #6e7781);
-  font-size: 13px;
-  line-height: 28px;
   cursor: pointer;
 }
 
 .cwd-emotion-trigger:hover {
   color: var(--cwd-primary, #0969da);
-  border-color: var(--cwd-primary, #0969da);
+  background: transparent;
+}
+
+.cwd-emotion-trigger-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 
 .cwd-emotion-popover {
@@ -274,6 +282,13 @@
   padding: 8px;
 }
 
+.cwd-emotion-grid-emoticon {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  grid-template-columns: none;
+}
+
 .cwd-emotion-item {
   display: flex;
   align-items: center;
@@ -285,6 +300,13 @@
   border-radius: var(--cwd-radius, 6px);
   background: transparent;
   cursor: pointer;
+}
+
+.cwd-emotion-grid-emoticon .cwd-emotion-item {
+  width: auto;
+  min-width: 0;
+  height: 32px;
+  padding: 0 8px;
 }
 
 .cwd-emotion-item:hover {
@@ -299,13 +321,31 @@
 }
 
 .cwd-emotion-text {
-  max-width: 100%;
-  overflow: hidden;
+  max-width: none;
+  overflow: visible;
   color: var(--cwd-text, #24292f);
   font-size: 18px;
   line-height: 1;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .cwd-emotion-popover {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+    max-height: min(70vh, 420px);
+    border-radius: 8px;
+    z-index: 2147483647;
+  }
+
+  .cwd-emotion-grid {
+    max-height: calc(min(70vh, 420px) - 48px);
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+  }
 }
 
 .cwd-error-text {

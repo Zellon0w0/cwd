@@ -20,22 +20,29 @@ const path = require('path');
 function run() {
 	const emotionDir = path.resolve(__dirname);
 
-	// 1. 读取文本表情（颜文字等）
+	// 1. 读取文本表情（颜文字等），稍后追加到最后
 	const emoticonsPath = path.join(emotionDir, 'emoticons.json');
 	const result = {};
+	let emoticons = {};
 
 	if (fs.existsSync(emoticonsPath)) {
-		const emoticons = JSON.parse(fs.readFileSync(emoticonsPath, 'utf-8'));
-		Object.assign(result, emoticons);
+		emoticons = JSON.parse(fs.readFileSync(emoticonsPath, 'utf-8'));
 		console.log('[Generate-OwO] Loaded emoticons.json');
 	}
 
 	// 2. 扫描子目录，生成图片表情包
-	const entries = fs.readdirSync(emotionDir, { withFileTypes: true });
+	const packOrder = ['twemoji', 'aru'];
+	const entries = fs.readdirSync(emotionDir, { withFileTypes: true })
+		.filter(entry => entry.isDirectory() && entry.name !== 'node_modules')
+		.sort((a, b) => {
+			const indexA = packOrder.indexOf(a.name);
+			const indexB = packOrder.indexOf(b.name);
+			if (indexA !== -1 || indexB !== -1) {
+				return (indexA === -1 ? Number.MAX_SAFE_INTEGER : indexA) - (indexB === -1 ? Number.MAX_SAFE_INTEGER : indexB);
+			}
+			return a.name.localeCompare(b.name);
+		});
 	for (const entry of entries) {
-		if (!entry.isDirectory()) continue;
-		if (entry.name === 'node_modules') continue;
-
 		const packDir = path.join(emotionDir, entry.name);
 		const metaPath = path.join(packDir, 'meta.json');
 
@@ -75,6 +82,8 @@ function run() {
 
 		console.log(`[Generate-OwO] Scanned pack "${entry.name}" (${displayName}): ${container.length} icons`);
 	}
+
+	Object.assign(result, emoticons);
 
 	// 3. 写入 OwO.json
 	const owoPath = path.join(emotionDir, 'OwO.json');

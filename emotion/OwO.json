@@ -1,118 +1,107 @@
 {
-  "颜文字": {
-    "type": "emoticon",
+  "推特": {
+    "type": "image",
+    "name": "twemoji",
     "container": [
       {
-        "icon": "OωO",
-        "text": "Author: DIYgod"
+        "icon": "angry",
+        "text": "生气"
       },
       {
-        "icon": "|´・ω・)ノ",
-        "text": "Hi"
+        "icon": "bigsmile",
+        "text": "红脸笑"
       },
       {
-        "icon": "ヾ(≧∇≦*)ゝ",
+        "icon": "congratulate",
+        "text": "祝贺"
+      },
+      {
+        "icon": "cool",
+        "text": "炫酷"
+      },
+      {
+        "icon": "cry",
+        "text": "哭泣"
+      },
+      {
+        "icon": "dtongue",
+        "text": "吐舌"
+      },
+      {
+        "icon": "family",
+        "text": "家庭"
+      },
+      {
+        "icon": "frightened",
+        "text": "惊恐"
+      },
+      {
+        "icon": "gift",
+        "text": "礼物"
+      },
+      {
+        "icon": "happy",
         "text": "开心"
       },
       {
-        "icon": "(☆ω☆)",
-        "text": "星星眼"
+        "icon": "kiss",
+        "text": "亲亲"
       },
       {
-        "icon": "（╯‵□′）╯︵┴─┴",
-        "text": "掀桌"
+        "icon": "love",
+        "text": "喜欢"
       },
       {
-        "icon": "￣﹃￣",
-        "text": "流口水"
+        "icon": "notalk",
+        "text": "不说话"
       },
       {
-        "icon": "(/ω＼)",
-        "text": "捂脸"
+        "icon": "ok",
+        "text": "可以"
       },
       {
-        "icon": "∠( ᐛ 」∠)＿",
-        "text": "给跪"
+        "icon": "prayer",
+        "text": "祈祷"
       },
       {
-        "icon": "(๑•̀ㅁ•́ฅ)",
-        "text": "Hi"
+        "icon": "proud",
+        "text": "得意"
       },
       {
-        "icon": "→_→",
-        "text": "斜眼"
+        "icon": "shy",
+        "text": "害羞"
       },
       {
-        "icon": "୧(๑•̀⌄•́๑)૭",
-        "text": "加油"
+        "icon": "smile",
+        "text": "微笑"
       },
       {
-        "icon": "٩(ˊᗜˋ*)و",
-        "text": "有木有WiFi"
+        "icon": "smilecry",
+        "text": "笑哭"
       },
       {
-        "icon": "(ノ°ο°)ノ",
-        "text": "前方高能预警"
+        "icon": "star",
+        "text": "星星"
       },
       {
-        "icon": "(´இ皿இ｀)",
-        "text": "我从未见过如此厚颜无耻之人"
+        "icon": "sweat",
+        "text": "流汗"
       },
       {
-        "icon": "⌇●﹏●⌇",
-        "text": "吓死宝宝惹"
+        "icon": "tiaomei",
+        "text": "挑眉"
       },
       {
-        "icon": "(ฅ´ω`ฅ)",
-        "text": "已阅留爪"
+        "icon": "tilted",
+        "text": "歪头"
       },
       {
-        "icon": "(╯°A°)╯︵○○○",
-        "text": "去吧大师球"
+        "icon": "tongue",
+        "text": "吐舌"
       },
       {
-        "icon": "φ(￣∇￣o)",
-        "text": "太萌惹"
-      },
-      {
-        "icon": "ヾ(´･ ･｀｡)ノ\"",
-        "text": "咦咦咦"
-      },
-      {
-        "icon": "( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃",
-        "text": "气呼呼"
-      },
-      {
-        "icon": "(ó﹏ò｡)",
-        "text": "我受到了惊吓"
-      },
-      {
-        "icon": "Σ(っ °Д °;)っ",
-        "text": "什么鬼"
-      },
-      {
-        "icon": "( ,,´･ω･)ﾉ\"(´っω･｀｡)",
-        "text": "摸摸头"
-      },
-      {
-        "icon": "╮(╯▽╰)╭ ",
-        "text": "无奈"
-      },
-      {
-        "icon": "o(*////▽////*)q ",
-        "text": "脸红"
-      },
-      {
-        "icon": "＞﹏＜",
-        "text": ""
-      },
-      {
-        "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)",
-        "text": ""
-      },
-      {
-        "icon": "(｡•ˇ‸ˇ•｡)",
-        "text": ""
+        "icon": "uncomfort",
+        "text": "难受"
       }
     ]
   },
@@ -274,109 +263,120 @@
       }
     ]
   },
-  "推特": {
-    "type": "image",
-    "name": "twemoji",
+  "颜文字": {
+    "type": "emoticon",
     "container": [
       {
-        "icon": "angry",
-        "text": "生气"
+        "icon": "OωO",
+        "text": "Author: DIYgod"
       },
       {
-        "icon": "bigsmile",
-        "text": "红脸笑"
+        "icon": "|´・ω・)ノ",
+        "text": "Hi"
       },
       {
-        "icon": "congratulate",
-        "text": "祝贺"
-      },
-      {
-        "icon": "cool",
-        "text": "炫酷"
-      },
-      {
-        "icon": "cry",
-        "text": "哭泣"
-      },
-      {
-        "icon": "dtongue",
-        "text": "吐舌"
-      },
-      {
-        "icon": "family",
-        "text": "家庭"
-      },
-      {
-        "icon": "frightened",
-        "text": "惊恐"
-      },
-      {
-        "icon": "gift",
-        "text": "礼物"
-      },
-      {
-        "icon": "happy",
+        "icon": "ヾ(≧∇≦*)ゝ",
         "text": "开心"
       },
       {
-        "icon": "kiss",
-        "text": "亲亲"
+        "icon": "(☆ω☆)",
+        "text": "星星眼"
       },
       {
-        "icon": "love",
-        "text": "喜欢"
+        "icon": "（╯‵□′）╯︵┴─┴",
+        "text": "掀桌"
       },
       {
-        "icon": "notalk",
-        "text": "不说话"
+        "icon": "￣﹃￣",
+        "text": "流口水"
       },
       {
-        "icon": "ok",
-        "text": "可以"
+        "icon": "(/ω＼)",
+        "text": "捂脸"
       },
       {
-        "icon": "prayer",
-        "text": "祈祷"
+        "icon": "∠( ᐛ 」∠)＿",
+        "text": "给跪"
       },
       {
-        "icon": "proud",
-        "text": "得意"
+        "icon": "(๑•̀ㅁ•́ฅ)",
+        "text": "Hi"
       },
       {
-        "icon": "shy",
-        "text": "害羞"
+        "icon": "→_→",
+        "text": "斜眼"
       },
       {
-        "icon": "smile",
-        "text": "微笑"
+        "icon": "୧(๑•̀⌄•́๑)૭",
+        "text": "加油"
       },
       {
-        "icon": "smilecry",
-        "text": "笑哭"
+        "icon": "٩(ˊᗜˋ*)و",
+        "text": "有木有WiFi"
       },
       {
-        "icon": "star",
-        "text": "星星"
+        "icon": "(ノ°ο°)ノ",
+        "text": "前方高能预警"
       },
       {
-        "icon": "sweat",
-        "text": "流汗"
+        "icon": "(´இ皿இ｀)",
+        "text": "我从未见过如此厚颜无耻之人"
       },
       {
-        "icon": "tiaomei",
-        "text": "挑眉"
+        "icon": "⌇●﹏●⌇",
+        "text": "吓死宝宝惹"
       },
       {
-        "icon": "tilted",
-        "text": "歪头"
+        "icon": "(ฅ´ω`ฅ)",
+        "text": "已阅留爪"
       },
       {
-        "icon": "tongue",
-        "text": "吐舌"
+        "icon": "(╯°A°)╯︵○○○",
+        "text": "去吧大师球"
       },
       {
-        "icon": "uncomfort",
-        "text": "难受"
+        "icon": "φ(￣∇￣o)",
+        "text": "太萌惹"
+      },
+      {
+        "icon": "ヾ(´･ ･｀｡)ノ\"",
+        "text": "咦咦咦"
+      },
+      {
+        "icon": "( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃",
+        "text": "气呼呼"
+      },
+      {
+        "icon": "(ó﹏ò｡)",
+        "text": "我受到了惊吓"
+      },
+      {
+        "icon": "Σ(っ °Д °;)っ",
+        "text": "什么鬼"
+      },
+      {
+        "icon": "( ,,´･ω･)ﾉ\"(´っω･｀｡)",
+        "text": "摸摸头"
+      },
+      {
+        "icon": "╮(╯▽╰)╭ ",
+        "text": "无奈"
+      },
+      {
+        "icon": "o(*////▽////*)q ",
+        "text": "脸红"
+      },
+      {
+        "icon": "＞﹏＜",
+        "text": ""
+      },
+      {
+        "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)",
+        "text": ""
+      },
+      {
+        "icon": "(｡•ˇ‸ˇ•｡)",
+        "text": ""
       }
     ]
   }
