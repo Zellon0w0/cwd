@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { assertValidEmotionJson, loadFeatureSettings, saveFeatureSettings } from './featureSettings';
+import { assertValidEmotionJsonUrl, loadFeatureSettings, saveFeatureSettings } from './featureSettings';
 
 type SettingRow = {
 	key: string;
@@ -60,14 +60,9 @@ describe('featureSettings emotionJson', () => {
 		expect(settings.emotionJson).toBe('');
 	});
 
-	it('saves and loads custom emotion JSON', async () => {
+	it('saves and loads custom emotion JSON URL', async () => {
 		const { env } = createMockEnv();
-		const emotionJson = JSON.stringify({
-			'颜文字': {
-				type: 'emoticon',
-				container: [{ icon: 'OωO', text: 'Author' }],
-			},
-		});
+		const emotionJson = 'https://cdn.example.com/emotion/OwO.json';
 
 		await saveFeatureSettings(env, { emotionJson });
 		const settings = await loadFeatureSettings(env);
@@ -75,7 +70,22 @@ describe('featureSettings emotionJson', () => {
 		expect(settings.emotionJson).toBe(emotionJson);
 	});
 
-	it('rejects invalid emotion JSON', () => {
-		expect(() => assertValidEmotionJson('{bad json')).toThrow('表情 JSON 格式不正确');
+	it('saves and loads site-relative emotion JSON URL', async () => {
+		const { env } = createMockEnv();
+		const emotionJson = '/emotion/OwO.json';
+
+		await saveFeatureSettings(env, { emotionJson });
+		const settings = await loadFeatureSettings(env);
+
+		expect(settings.emotionJson).toBe(emotionJson);
+	});
+
+	it('rejects inline emotion JSON text', () => {
+		expect(() => assertValidEmotionJsonUrl('{"颜文字":{"container":[]}}')).toThrow('表情 JSON 链接格式不正确');
+	});
+
+	it('rejects non-json emotion URLs', () => {
+		expect(() => assertValidEmotionJsonUrl('javascript:alert(1)')).toThrow('表情 JSON 链接格式不正确');
+		expect(() => assertValidEmotionJsonUrl('https://cdn.example.com/emotion/OwO.txt')).toThrow('表情 JSON 链接格式不正确');
 	});
 });

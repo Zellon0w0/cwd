@@ -21,25 +21,25 @@ export type FeatureSettings = {
 };
 
 /**
- * 校验并规整自定义表情 JSON。
+ * 校验并规整自定义表情 JSON 文件链接。
  *
- * @param value - 后台提交的 JSON 字符串
- * @returns 去除首尾空白后的 JSON 字符串
+ * @param value - 后台提交的 JSON 文件链接
+ * @returns 去除首尾空白后的 JSON 文件链接
  */
-export function assertValidEmotionJson(value: string): string {
+export function assertValidEmotionJsonUrl(value: string): string {
 	const trimmed = value.trim();
 	if (!trimmed) {
 		return '';
 	}
 
 	try {
-		const parsed = JSON.parse(trimmed);
-		if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
-			throw new Error('invalid root');
+		const url = new URL(trimmed, 'https://cwd.local');
+		if (!['http:', 'https:'].includes(url.protocol) || !url.pathname.toLowerCase().endsWith('.json')) {
+			throw new Error('invalid url');
 		}
 		return trimmed;
 	} catch {
-		throw new Error('表情 JSON 格式不正确');
+		throw new Error('表情 JSON 链接格式不正确');
 	}
 }
 
@@ -175,7 +175,7 @@ export async function saveFeatureSettings(
 		},
 		{
 			key: FEATURE_EMOTION_JSON_KEY,
-			value: settings.emotionJson !== undefined ? assertValidEmotionJson(settings.emotionJson) : undefined
+			value: settings.emotionJson !== undefined ? assertValidEmotionJsonUrl(settings.emotionJson) : undefined
 		}
 	];
 

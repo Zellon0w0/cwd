@@ -49,7 +49,7 @@ function resolveImageUrl(group, item) {
 /**
  * 解析 OwO 风格表情 JSON。
  *
- * @param {string|Object} emotionJson - 表情 JSON 字符串或对象
+ * @param {Object} emotionJson - 表情 JSON 对象
  * @returns {Array<{name: string, type: string, items: Array}>}
  */
 export function parseEmotionGroups(emotionJson) {
@@ -57,20 +57,11 @@ export function parseEmotionGroups(emotionJson) {
 		return [];
 	}
 
-	let parsed = emotionJson;
-	if (typeof emotionJson === 'string') {
-		try {
-			parsed = JSON.parse(emotionJson);
-		} catch {
-			return [];
-		}
-	}
-
-	if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+	if (typeof emotionJson !== 'object' || Array.isArray(emotionJson)) {
 		return [];
 	}
 
-	return Object.entries(parsed)
+	return Object.entries(emotionJson)
 		.map(([groupName, group]) => {
 			if (!group || typeof group !== 'object' || !Array.isArray(group.container)) {
 				return null;
@@ -115,6 +106,37 @@ export function parseEmotionGroups(emotionJson) {
 			};
 		})
 		.filter(Boolean);
+}
+
+/**
+ * 从 JSON 文件链接加载并解析表情分组。
+ *
+ * @param {string|Object} emotionJsonUrl - 表情 JSON 文件链接；对象仅用于兼容直接传入已解析数据
+ * @param {Function} fetchImpl - fetch 实现，测试时可注入
+ * @returns {Promise<Array<{name: string, type: string, items: Array}>>}
+ */
+export async function loadEmotionGroups(emotionJsonUrl, fetchImpl = globalThis.fetch) {
+	if (!emotionJsonUrl) {
+		return [];
+	}
+
+	if (typeof emotionJsonUrl === 'object') {
+		return parseEmotionGroups(emotionJsonUrl);
+	}
+
+	if (typeof emotionJsonUrl !== 'string' || !emotionJsonUrl.trim() || typeof fetchImpl !== 'function') {
+		return [];
+	}
+
+	try {
+		const response = await fetchImpl(emotionJsonUrl.trim(), { credentials: 'same-origin' });
+		if (!response || !response.ok || typeof response.json !== 'function') {
+			return [];
+		}
+		return parseEmotionGroups(await response.json());
+	} catch {
+		return [];
+	}
 }
 
 /**
