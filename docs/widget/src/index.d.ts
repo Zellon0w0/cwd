@@ -73,7 +73,7 @@ export interface CWDCommentsConfig {
   commentPlaceholder?: string;
 
   /**
-   * Custom OwO emotion JSON for the emotion picker
+   * Custom OwO emotion JSON for the emotion picker. Empty values hide the emotion button.
    */
   emotionJson?: string | Record<string, unknown>;
 }

@@ -11,7 +11,6 @@ import { ImagePreview } from '@/components/ImagePreview.js';
 import { parseEmotionGroups } from '@/utils/emotions.js';
 import styles from '@/styles/main.css?inline';
 import { locales } from '@/locales/index.js';
-import defaultEmotionJson from '../../../../emotion/OwO.json';
 
 /**
  * CWDComments 评论组件主类
@@ -23,7 +22,7 @@ export class CWDComments {
 	 * @param {string} config.apiBaseUrl - API 基础地址
 	 * @param {'light'|'dark'} [config.theme] - 主题（可选）
 	 * @param {number} [config.pageSize] - 每页评论数（可选，默认 20）
-	 * @param {string|Object} [config.emotionJson] - 自定义表情 JSON
+	 * @param {string|Object} [config.emotionJson] - 前端表情面板 JSON，留空则不显示表情按钮
 	 *
 	 * 以下字段由组件自动推导或从后端读取，无需通过 config 传入：
 	 * - postSlug：window.location.origin + window.location.pathname
@@ -33,7 +32,7 @@ export class CWDComments {
 	 */
 	constructor(config) {
 		this.config = { ...config };
-		this.emotionGroups = parseEmotionGroups(config.emotionJson || defaultEmotionJson);
+		this.emotionGroups = parseEmotionGroups(config.emotionJson);
 		if (config.siteId) {
 			this.config.siteId = config.siteId;
 		}
@@ -242,7 +241,7 @@ export class CWDComments {
 			const emotionSource =
 				typeof serverConfig.emotionJson === 'string' && serverConfig.emotionJson.trim()
 					? serverConfig.emotionJson
-					: this.config.emotionJson || defaultEmotionJson;
+					: this.config.emotionJson;
 			this.emotionGroups = parseEmotionGroups(emotionSource);
 
 			const api = createApiClient(this.config);

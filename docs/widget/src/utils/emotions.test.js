@@ -2,6 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { insertTextAtCursor, parseEmotionGroups } from './emotions.js';
 
+test('parseEmotionGroups returns no groups when emotion JSON is empty', () => {
+	assert.deepEqual(parseEmotionGroups(), []);
+	assert.deepEqual(parseEmotionGroups(''), []);
+});
+
 test('parseEmotionGroups maps OwO text and image groups', () => {
 	const groups = parseEmotionGroups(
 		JSON.stringify({
@@ -12,7 +17,7 @@ test('parseEmotionGroups maps OwO text and image groups', () => {
 			'阿鲁': {
 				type: 'image',
 				name: 'aru',
-				container: [{ icon: 'angry', text: '生气' }],
+				container: [{ icon: 'angry', text: '生气', url: '/emotion/aru/angry.png' }],
 			},
 		})
 	);

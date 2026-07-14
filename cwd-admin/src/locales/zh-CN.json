@@ -271,7 +271,7 @@
       "save": "保存",
       "saving": "保存中...",
       "emotionJson": "表情 JSON",
-      "emotionJsonHint": "自定义前端表情面板的 OwO JSON。留空则使用内置三组默认表情；图片表情默认读取 /emotion/<表情包>/<文件名>.png。"
+      "emotionJsonHint": "自定义前端表情面板的 OwO JSON。留空则不显示表情按钮；图片表情默认读取 /emotion/<表情包>/<文件名>.png。"
     },
     "emailNotify": {
       "title": "通知邮箱设置",

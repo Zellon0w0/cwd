@@ -17,6 +17,20 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * 生成最终站点中可直接访问的表情图片地址。
+ *
+ * @param {string} packName - 表情包目录名。
+ * @param {string} fileName - 图片文件名。
+ * @returns {string}
+ */
+function buildEmotionUrl(packName, fileName) {
+	return `/emotion/${packName}/${fileName}`;
+}
+
+/**
+ * 扫描 emotion 目录并生成可直接使用的 OwO JSON 集合。
+ */
 function run() {
 	const emotionDir = path.resolve(__dirname);
 
@@ -71,6 +85,7 @@ function run() {
 			return {
 				icon: iconName,
 				text: itemsMap[iconName] || iconName,
+				url: buildEmotionUrl(entry.name, file),
 			};
 		});
 

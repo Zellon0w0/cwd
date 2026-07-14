@@ -2,11 +2,11 @@
 
 ## 目标
 
-为 CWD 评论系统新增表情系统：默认使用根目录 `emotion/` 下的三组表情资源，后台可自定义表情 JSON，前台 Widget 在评论框和回复框下方显示表情按钮，点击后弹出表情选择面板并插入内容。
+为 CWD 评论系统新增表情系统：后台可写入自定义表情 JSON，前台 Widget 仅在解析到表情组时于评论框和回复框下方显示表情按钮，点击后弹出表情选择面板并插入内容。
 
 ## 资源格式
 
-- 默认表情数据使用现有 `emotion/OwO.json`。
+- 不提供运行时内置默认表情；是否显示表情按钮由 `emotionJson` 是否写入并成功解析决定。
 - `emotion/emoticons.json` 提供文本表情。
 - `emotion/aru/` 与 `emotion/twemoji/` 提供图片表情包，目录内 `meta.json` 负责显示名和标签。
 - `emotion/generate-owo.cjs` 继续作为生成组文件的脚本，不新增资源扫描机制。
@@ -16,7 +16,7 @@
 1. 后端 `FeatureSettings` 增加 `emotionJson?: string`。
 2. 后台设置页在功能设置中显示“表情 JSON”输入框，保存到 `/admin/settings/features`。
 3. 公共配置接口 `/api/config/comments` 返回 `emotionJson`。
-4. Widget 读取 `emotionJson`，解析为表情组；若为空则使用内置 `emotion/OwO.json`，若自定义 JSON 解析失败则不显示自定义表情。
+4. Widget 读取 `emotionJson`，解析为表情组；若为空或解析失败则不显示表情按钮。
 5. 用户选择文本表情时插入文本；选择图片表情时插入安全的 `<img class="tk-owo-emotion" ...>` 标记。
 
 ## 安全和兼容

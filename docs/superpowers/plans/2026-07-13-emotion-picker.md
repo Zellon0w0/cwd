@@ -4,7 +4,7 @@
 
 **Goal:** Add configurable OwO-style emotion packs to backend settings, admin settings UI, and the frontend comment widget.
 
-**Architecture:** Store the emotion JSON string as a feature setting, expose it through the existing public config endpoint, and parse/render it inside the widget. Keep resource generation in `emotion/generate-owo.cjs` and reuse `emotion/OwO.json` as the default group file.
+**Architecture:** Store the emotion JSON string as a feature setting, expose it through the existing public config endpoint, and parse/render it inside the widget. Do not ship a runtime default emotion pack; empty or invalid `emotionJson` means the widget hides the emotion button.
 
 **Tech Stack:** Cloudflare Workers, Hono, D1 Settings table, Vitest, Vue 3, Vite, vanilla JS widget components.
 
@@ -84,10 +84,10 @@
 
 **Files:**
 - Modify if needed: `docs/build.js`
-- Verify: `emotion/OwO.json`
+- Verify: optional generated emotion JSON and static image assets
 
 **Interfaces:**
-- Ensures: deployed docs can serve `/emotion/<pack>/<icon>.png` and `/emotion/OwO.json` if docs build copies the directory.
+- Ensures: deployed docs can serve `/emotion/<pack>/<icon>.png` when a configured emotion JSON references the copied static assets.
 
 - [ ] Check whether docs build copies `emotion/` into the docs public output.
 - [ ] If needed, update `docs/build.js` to copy `emotion/` without `.DS_Store`.
