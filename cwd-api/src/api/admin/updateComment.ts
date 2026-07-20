@@ -112,7 +112,7 @@ export const updateComment = async (c: Context<{ Bindings: Bindings }>) => {
     return c.json({ message: '评论内容不能为空' }, 400);
   }
 
-  const html = await marked.parse(cleanedContent, { async: true });
+  const html = await marked.parse(cleanedContent, { async: true, breaks: true });
   const contentHtml = xss(html, {
     whiteList: {
       ...xss.whiteList,

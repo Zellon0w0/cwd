@@ -134,7 +134,7 @@ export const postComment = async (c: Context<{ Bindings: Bindings }>) => {
   const name = checkContent(rawName);
 
   // Markdown 渲染与 XSS 过滤
-  const html = await marked.parse(cleanedContent, { async: true });
+  const html = await marked.parse(cleanedContent, { async: true, breaks: true });
   const contentHtml = xss(html, {
     whiteList: {
       ...xss.whiteList,
